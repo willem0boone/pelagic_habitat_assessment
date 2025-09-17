@@ -1,0 +1,18 @@
+shiny
+htmltools (>=0.5.8)
+plotly
+shinyjs
+shiny
+shinyjs
+htmltools>=0.5.8
+plotly
+tidyverse
+data.table
+janitor
+pracma
+broom
+EnvStats
+patchwork
+rnaturalearth
+zoo
+openxlsx
