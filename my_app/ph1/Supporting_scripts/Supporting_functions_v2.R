@@ -822,3 +822,125 @@ combine_pi_plots <- function(x, y, maps, limits, path){
     }
   }
 }
+
+
+
+library(plotly)
+library(dplyr)
+library(ggplot2)
+
+plot_env_shiny <- function(x, y, z, lf, pi, label = NULL, threshold = NULL) {
+  
+  # rounding function for labels
+  specify_decimal <- function(x, k) trimws(format(round(x, k), nsmall = k))
+  
+  refs <- y %>%
+    group_by(assess_id) %>%
+    summarise(refStart = min(year), refStop = max(year)) %>%
+    ungroup()
+  
+  comps <- z %>%
+    group_by(assess_id) %>%
+    summarise(compStart = min(year), compStop = max(year)) %>%
+    ungroup()
+  
+  df_lookup_main <- data.frame(assess_id = pi$assess_id, lf_pair = pi$lf_pair) %>%
+    left_join(refs, by = "assess_id") %>%
+    left_join(comps, by = "assess_id") %>%
+    mutate(years_label = paste0("Ref: ", refStart, "-", refStop, ", Comp: ", compStart, "-", compStop))
+  
+  df_lookup_main$string <- paste0(
+    'PI: ', specify_decimal(pi$PI, 2), ' ',
+    df_lookup_main$years_label, '\n',
+    'ref points: ', pi$refPoints, ', ',
+    'comp points: ', pi$newPoints, ', ',
+    'binom-p: ', specify_decimal(pi$binomialProbability, 4), ', ',
+    'chi-sq: ', specify_decimal(pi$chi.sq, 1)
+  )
+  
+  main_outer <- x[[1]]
+  main_inner <- x[[2]]
+  main_outer_data_id <- main_outer
+  main_inner_data_id <- main_inner
+  
+  plot_list <- list()
+  
+  for(i in 1:length(unique(main_outer_data_id$lf_pair))) {
+    
+    temp_lf <- unlist(strsplit(sort(unique(main_outer_data_id$lf_pair))[i], "-"))
+    
+    df_outer <- subset(main_outer_data_id, lf_pair == paste(temp_lf, collapse = "-"))
+    df_inner <- subset(main_inner_data_id, lf_pair == paste(temp_lf, collapse = "-"))
+    
+    names(df_outer)[1:2] <- c("x", "y")
+    names(df_inner)[1:2] <- c("x", "y")
+    
+    df_outer$subid <- 1L
+    df_inner$subid <- 2L
+    df_polys <- rbind(df_outer, df_inner)
+    
+    temp_ref <- y %>% select(1:4, all_of(temp_lf)) %>% arrange(assess_id, year, month)
+    names(temp_ref)[c(ncol(temp_ref)-1,ncol(temp_ref))] <- c("vx", "vy")
+    
+    temp_comp <- z %>% select(1:4, all_of(temp_lf)) %>% arrange(assess_id, year, month)
+    names(temp_comp)[c(ncol(temp_comp)-1,ncol(temp_comp))] <- c("vx", "vy")
+    
+    ids <- intersect(unique(temp_ref$assess_id), unique(temp_comp$assess_id))
+    
+    temp_comp$month <- as.numeric(temp_comp$month)
+    temp_comp$season <- ifelse(temp_comp$month %in% c(1, 2, 12), "12 1 2",
+                               ifelse(temp_comp$month %in% c(3, 4, 5), "3 4 5",
+                                      ifelse(temp_comp$month %in% c(6, 7, 8), "6 7 8",
+                                             ifelse(temp_comp$month %in% c(9, 10, 11), "9 10 11", "ERROR"))))
+    
+    factor_levels <- unique(temp_comp$season)
+    myColors <- c("blue", "green", "yellow", "red")
+    names(myColors) <- factor_levels
+    
+    df_lookup_temp <- unique(subset(df_lookup_main, lf_pair == paste(temp_lf, collapse = "-")))
+    df_lookup_temp <- setNames(df_lookup_temp$string, df_lookup_temp$assess_id)
+    
+    sub_plot_list <- list()
+    
+    for(j in 1:length(ids)) {
+      poly <- ids[j]
+      
+      gg_panel <- ggplot() +
+        geom_polygon(data = subset(df_polys, assess_id == poly), 
+                     aes(x, y, group = assess_id, subgroup = subid,
+                         text = paste0("Assess ID: ", assess_id)), 
+                     fill = "grey60", colour = "black", size = 0.25, alpha = 0.5) +
+        geom_path(data = subset(temp_comp, assess_id == poly), 
+                  aes(x = vx, y = vy, text = paste0("Comp Year: ", year, "-", month)), 
+                  colour = "grey", linetype = 2, size = 0.25) +
+        geom_point(data = subset(temp_comp, assess_id == poly), 
+                   aes(x = vx, y = vy, fill = season, text = paste0("Comp: ", vx, ", ", vy)), 
+                   shape = 21) +
+        geom_point(data = subset(temp_ref, assess_id == poly), 
+                   aes(x = vx, y = vy, text = paste0("Ref: ", vx, ", ", vy)), 
+                   shape = 21, fill = NA, colour = "grey60", alpha = 0.5) +
+        scale_x_continuous(name = bquote(log[10]* "(" * .(temp_lf[1]) * ")")) +
+        scale_y_continuous(expand = c(0.1,0), name = bquote(log[10]* "(" * .(temp_lf[2]) * ")")) +
+        scale_fill_manual(values = myColors) +
+        facet_wrap(~ assess_id, scales = "free", labeller = labeller(assess_id = df_lookup_temp)) +
+        theme_bw() +
+        theme(plot.title = element_text(hjust = 0.5),
+              legend.position = c(.5, .05),
+              legend.spacing.x = unit(0.1, 'cm'),
+              legend.direction = "horizontal",
+              legend.background = element_blank(),
+              legend.key = element_rect(fill = NA),
+              legend.text = element_text(margin = margin(t = 2))) +
+        guides(fill = guide_legend(title = "Month", title.position = "left"))
+      
+      # Convert ggplot to interactive plotly
+      sub_plot_list[[poly]] <- ggplotly(gg_panel, tooltip = "text")
+    }
+    
+    plot_list[[paste(temp_lf, collapse = "-")]] <- sub_plot_list
+  }
+  
+  return(plot_list)
+}
+
+
