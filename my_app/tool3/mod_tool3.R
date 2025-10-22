@@ -1,5 +1,5 @@
 # ===============================
-# TOOL 3 MODULE
+# TOOL 3 MODULE (self-contained)
 # ===============================
 
 tool3UI <- function(id) {
@@ -19,38 +19,45 @@ tool3UI <- function(id) {
   )
 }
 
-tool3Server <- function(id, rv) {
+tool3Server <- function(id, global) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
     
-    # --- Button counter ---
+    # --- Local reactive state ---
+    local_rv <- reactiveValues(counter = 0)
+    
+    # --- Main button logic ---
     observeEvent(input$btn, {
-      rv$counters$tool3 <- rv$counters$tool3 + 1
+      local_rv$counter <- local_rv$counter + 1
       output$text <- renderText({
-        sprintf("You pressed Tool 3 button %d times", rv$counters$tool3)
+        sprintf("You pressed Tool 3 button %d times", local_rv$counter)
       })
     })
     
-    # --- Reset button logic ---
+    # --- Local reset modal ---
     observeEvent(input$reset_tool, {
-      # Signal app.R to trigger modal + reset
-      rv$pending_new <- "tool3"
       showModal(modalDialog(
         title = "Reset Tool 3",
         "You are resetting Tool 3. All data will be cleared.",
         easyClose = FALSE,
         footer = tagList(
           modalButton("Cancel"),
-          actionButton("leave_ok", "OK", class = "btn btn-danger")
+          actionButton(ns("confirm_reset"), "OK", class = "btn btn-danger")
         )
       ))
     })
     
-    # --- Clear UI text if counters reset ---
-    observeEvent(rv$counters$tool3, {
-      if (rv$counters$tool3 == 0) {
-        output$text <- renderText({ "" })
-      }
+    # --- Confirm reset ---
+    observeEvent(input$confirm_reset, {
+      removeModal()
+      local_rv$counter <- 0
+      output$text <- renderText({ "" })
+    })
+    
+    # --- Respond to global reset (from app.R) ---
+    observeEvent(global$reset_all, {
+      local_rv$counter <- 0
+      output$text <- renderText({ "" })
     })
   })
 }

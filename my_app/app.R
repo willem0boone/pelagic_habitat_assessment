@@ -39,46 +39,28 @@ ui <- navbarPage(
 # --- SERVER ---
 server <- function(input, output, session) {
   rv <- reactiveValues(
-    counters = list(
-      tool1 = list(red = 0, green = 0, blue = 0), # <- must be a list
-      tool2 = 0,
-      tool3 = 0
-    ),
+    reset_all = 0,
     current_tab = "welcome",
-    pending_new = NULL,
-    reset_tool1 = 0
+    pending_new = NULL
   )
   
-  # Call module servers
+  # Call modular servers (each module keeps its own counters)
   tool1Server("tool1", rv)
   tool2Server("tool2", rv)
   tool3Server("tool3", rv)
   
-  # Reset helper for counters & JS outputs
-  reset_tool <- function(tool_name) {
-    rv$counters[[tool_name]] <- 0
-    session$sendCustomMessage("resetTool", tool_name)
-    
-    # Trigger Tool 1 reset if applicable
-    if (tool_name == "tool1") {
-      rv$reset_tool1 <- rv$reset_tool1 + 1
-    }
-  }
-  
-  # Tab switching with confirmation
+  # Tab-switch confirmation
   observeEvent(input$tabs, {
     new <- input$tabs
     old <- rv$current_tab
     if (is.null(new) || new == old) return()
     
     if (grepl("^tool", old) && new != old) {
-      # revert tab selection until user confirms reset
       updateTabsetPanel(session, "tabs", selected = old)
       rv$pending_new <- new
       showModal(modalDialog(
         title = "Leaving Tool",
         paste0("You are leaving ", old, ". All data will be reset."),
-        easyClose = FALSE,
         footer = tagList(
           modalButton("Cancel"),
           actionButton("leave_ok", "OK", class = "btn btn-danger")
@@ -89,27 +71,21 @@ server <- function(input, output, session) {
     }
   })
   
-  # Modal OK event
   observeEvent(input$leave_ok, {
     removeModal()
     old <- rv$current_tab
-    if (grepl("^tool", old)) reset_tool(old)
     new <- rv$pending_new
     rv$pending_new <- NULL
+    
+    if (grepl("^tool", old)) {
+      rv$reset_all <- rv$reset_all + 1  # <-- single global reset trigger
+    }
+    
     if (!is.null(new)) {
       rv$current_tab <- new
       updateTabsetPanel(session, "tabs", selected = new)
     }
   })
-  
-  # JS reset handler for textOutputs in modules
-  js_reset <- "
-    Shiny.addCustomMessageHandler('resetTool', function(tool) {
-      const txt = document.querySelector(`#${tool}-text`);
-      if (txt) txt.innerHTML = '';
-    });
-  "
-  extendShinyjs(text = js_reset, functions = NULL)
 }
 
 # --- Run app ---

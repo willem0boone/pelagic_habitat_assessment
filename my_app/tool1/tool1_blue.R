@@ -2,32 +2,50 @@ tool1BlueUI <- function(id) {
   ns <- NS(id)
   tagList(
     div(class = "card p-3 shadow-sm rounded-3 mt-3",
-        h4("Tool 1 Blue Page"),
-        # blue button
+        h4("Tool 1 – Blue Workflow"),
         actionButton(ns("btn"), "Press me", class = "btn btn-primary"),
         br(), br(),
-        div(class = "fw-semibold text-success", textOutput(ns("text"), container = span))
+        div(class = "fw-semibold text-success", textOutput(ns("text"), container = span)),
+        br(),
+        actionButton(ns("reset_tool1"), "Return to Main Menu", class = "btn btn-warning mt-3")
     )
   )
 }
 
-tool1BlueServer <- function(id, rv) {
+tool1BlueServer <- function(id, global) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
+    local_rv <- reactiveValues(counter = 0)
     
-    # Button logic
     observeEvent(input$btn, {
-      rv$counters$tool1$blue <- rv$counters$tool1$blue + 1
+      local_rv$counter <- local_rv$counter + 1
       output$text <- renderText({
-        sprintf("You pressed Blue button %d times", rv$counters$tool1$blue)
+        sprintf("You pressed the Blue button %d times", local_rv$counter)
       })
     })
     
-    # Watch for Tool 1 reset
-    observeEvent(rv$reset_tool1, {
+    observeEvent(input$reset_tool1, {
+      showModal(modalDialog(
+        title = "Reset Tool 1",
+        "You are leaving the Blue workflow. All data will be cleared.",
+        easyClose = FALSE,
+        footer = tagList(
+          modalButton("Cancel"),
+          actionButton(ns("confirm_reset_tool1"), "OK", class = "btn btn-danger")
+        )
+      ))
+    })
+    
+    observeEvent(input$confirm_reset_tool1, {
+      removeModal()
+      local_rv$counter <- 0
       output$text <- renderText({ "" })
-      rv$counters$tool1$blue <- 0
+      global$return_to_tool1_menu <- isolate(global$return_to_tool1_menu) + 1
+    })
+    
+    observeEvent(global$reset_all, {
+      local_rv$counter <- 0
+      output$text <- renderText({ "" })
     })
   })
 }
-

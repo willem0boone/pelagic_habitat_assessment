@@ -1,30 +1,32 @@
 # ===============================
-# TOOL 1 MODULE
+# TOOL 1 MAIN MODULE
 # ===============================
 
 source("tool1/tool1_red.R")
 source("tool1/tool1_green.R")
 source("tool1/tool1_blue.R")
+source("tool1/tool1_yellow.R")
 
 tool1UI <- function(id) {
   ns <- NS(id)
   tagList(
-    uiOutput(ns("main_ui")),
-    br(),
-    div(class = "text-center",
-        actionButton(ns("reset_tool"), "Reset Tool 1", class = "btn btn-warning mt-3")
-    )
+    uiOutput(ns("main_ui"))
   )
 }
 
-tool1Server <- function(id, rv) {
+tool1Server <- function(id, global) {
   moduleServer(id, function(input, output, session) {
     ns <- session$ns
-    
-    # local reactive state
     local_rv <- reactiveValues(selected = NULL)
     
-    # --- Render UI dynamically ---
+    # ✅ Safe initialization — write only, no reactive read
+    isolate({
+      if (is.null(global$return_to_tool1_menu)) {
+        global$return_to_tool1_menu <- 0
+      }
+    })
+    
+    # --- Main UI rendering ---
     output$main_ui <- renderUI({
       if (is.null(local_rv$selected)) {
         fluidPage(
@@ -34,7 +36,8 @@ tool1Server <- function(id, rv) {
               br(),
               actionButton(ns("btn_red"), "Red", class = "btn btn-danger btn-lg mx-2"),
               actionButton(ns("btn_green"), "Green", class = "btn btn-success btn-lg mx-2"),
-              actionButton(ns("btn_blue"), "Blue", class = "btn btn-primary btn-lg mx-2")
+              actionButton(ns("btn_blue"), "Blue", class = "btn btn-primary btn-lg mx-2"),
+              actionButton(ns("btn_yellow"), "Yellow", class = "btn btn-warning btn-lg mx-2")
           )
         )
       } else if (local_rv$selected == "red") {
@@ -43,28 +46,26 @@ tool1Server <- function(id, rv) {
         tool1GreenUI(ns("green"))
       } else if (local_rv$selected == "blue") {
         tool1BlueUI(ns("blue"))
+      } else if (local_rv$selected == "yellow") {
+        tool1YellowUI(ns("yellow"))
       }
     })
     
-    # --- Color selection ---
+    # --- Color selection handlers ---
     observeEvent(input$btn_red,   { local_rv$selected <- "red" })
     observeEvent(input$btn_green, { local_rv$selected <- "green" })
     observeEvent(input$btn_blue,  { local_rv$selected <- "blue" })
+    observeEvent(input$btn_yellow,{ local_rv$selected <- "yellow" })
     
-    # --- Reset Tool button ---
-    observeEvent(input$reset_tool, {
-      rv$reset_tool1 <- rv$reset_tool1 + 1  # increment reactive trigger
-    })
+    # --- Include color submodules ---
+    tool1RedServer("red", global)
+    tool1GreenServer("green", global)
+    tool1BlueServer("blue", global)
+    tool1YellowServer("yellow", global)
     
-    # --- Connect color submodules ---
-    tool1RedServer("red", rv)
-    tool1GreenServer("green", rv)
-    tool1BlueServer("blue", rv)
-    
-    # --- Watch reset trigger ---
-    observeEvent(rv$reset_tool1, {
+    # --- Return-to-main-menu listener ---
+    observeEvent(global$return_to_tool1_menu, {
       local_rv$selected <- NULL
-      output$text <- renderText({ "" })
     })
   })
 }
