@@ -16,3 +16,4 @@ patchwork
 rnaturalearth
 zoo
 openxlsx
+shinyWidgets
