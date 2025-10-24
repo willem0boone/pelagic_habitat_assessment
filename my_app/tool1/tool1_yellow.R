@@ -3,7 +3,7 @@ tool1YellowUI <- function(id) {
   tagList(
     div(class = "card p-3 shadow-sm rounded-3 mt-3",
         h4("Tool 1 – Yellow Workflow"),
-        actionButton(ns("btn"), "Press me", class = "btn btn-warning"),
+        actionButton(ns("btn"), "Press me", class = "btn btn-primary"),
         br(), br(),
         div(class = "fw-semibold text-success", textOutput(ns("text"), container = span)),
         br(),
