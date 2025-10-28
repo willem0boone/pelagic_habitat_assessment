@@ -27,14 +27,6 @@ tool1UI <- function(id) {
   ns <- NS(id)
   fluidPage(
     useShinyjs(),
-    tags$style(HTML("
-      .tool1-btn {
-        width: 100%;
-        text-align: center;
-        font-weight: 500;
-        padding: 10px 0;
-      }
-    ")),
     fluidRow(
       column(
         width = 2,
@@ -150,13 +142,14 @@ tool1Server <- function(id, global, log_fun = NULL, tab_active = NULL) {
       log_tool1("All workflows reset via global$reset_all")
     }
     
-    # --- Reset Tool1 when tab becomes active ---
+    # --- Reset on leaving Tool1 tab ---
     if (!is.null(tab_active)) {
       observeEvent(tab_active(), {
-        if (tab_active() == "tool1") {
-          shinyjs::delay(50, reset_all)  # force Welcome page after modules settle
+        # When leaving Tool1
+        if (tab_active() != "tool1") {
+          reset_all()
         }
-      })
+      }, ignoreInit = TRUE)
     }
     
     invisible(list(reset = reset_all))

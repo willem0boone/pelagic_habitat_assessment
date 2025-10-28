@@ -1,22 +1,71 @@
-[2025-10-28 15:23:40] [Tool1] Tool1 main page initialized
-[2025-10-28 15:23:41] [Tool1] Red workflow reset
-[2025-10-28 15:23:41] [Tool1] Green workflow reset
-[2025-10-28 15:23:41] [Tool1] Blue workflow reset
-[2025-10-28 15:23:41] [Tool1] Yellow workflow reset
-[2025-10-28 15:23:41] [Tool1] All workflows reset via global$reset_all
-[2025-10-28 15:23:43] [Tool1] Switched workflow to red
-[2025-10-28 15:23:44] [Tool1] Red button pressed 1 times
-[2025-10-28 15:23:45] [Tool1] Red button pressed 2 times
-[2025-10-28 15:23:45] [Tool1] Red button pressed 3 times
-[2025-10-28 15:23:45] [Tool1] Red button pressed 4 times
-[2025-10-28 15:23:46] [Tool1] Red button pressed 5 times
-[2025-10-28 15:23:48] [Tool1] Red workflow reset
-[2025-10-28 15:23:48] [Tool1] Green workflow reset
-[2025-10-28 15:23:48] [Tool1] Blue workflow reset
-[2025-10-28 15:23:48] [Tool1] Yellow workflow reset
-[2025-10-28 15:23:48] [Tool1] All workflows reset via global$reset_all
-[2025-10-28 15:23:52] [Tool1] Red workflow reset
-[2025-10-28 15:23:52] [Tool1] Green workflow reset
-[2025-10-28 15:23:52] [Tool1] Blue workflow reset
-[2025-10-28 15:23:52] [Tool1] Yellow workflow reset
-[2025-10-28 15:23:52] [Tool1] All workflows reset via global$reset_all
+[2025-10-28 15:31:08] [Tool1] Tool1 main page initialized
+[2025-10-28 15:31:09] [Tool1] Red workflow reset
+[2025-10-28 15:31:09] [Tool1] Green workflow reset
+[2025-10-28 15:31:09] [Tool1] Blue workflow reset
+[2025-10-28 15:31:09] [Tool1] Yellow workflow reset
+[2025-10-28 15:31:09] [Tool1] All workflows reset via global$reset_all
+[2025-10-28 15:31:10] [Tool1] Switched workflow to red
+[2025-10-28 15:31:11] [Tool1] Red button pressed 1 times
+[2025-10-28 15:31:12] [Tool1] Red button pressed 2 times
+[2025-10-28 15:31:12] [Tool1] Red button pressed 3 times
+[2025-10-28 15:31:12] [Tool1] Red button pressed 4 times
+[2025-10-28 15:31:12] [Tool1] Red button pressed 5 times
+[2025-10-28 15:31:12] [Tool1] Red button pressed 6 times
+[2025-10-28 15:31:14] [Tool1] Red workflow reset
+[2025-10-28 15:31:14] [Tool1] Green workflow reset
+[2025-10-28 15:31:14] [Tool1] Blue workflow reset
+[2025-10-28 15:31:14] [Tool1] Yellow workflow reset
+[2025-10-28 15:31:14] [Tool1] All workflows reset via global$reset_all
+[2025-10-28 15:31:15] [Tool1] Red workflow reset
+[2025-10-28 15:31:15] [Tool1] Green workflow reset
+[2025-10-28 15:31:15] [Tool1] Blue workflow reset
+[2025-10-28 15:31:15] [Tool1] Yellow workflow reset
+[2025-10-28 15:31:15] [Tool1] All workflows reset via global$reset_all
+[2025-10-28 15:31:18] [Tool1] Red workflow reset
+[2025-10-28 15:31:18] [Tool1] Green workflow reset
+[2025-10-28 15:31:18] [Tool1] Blue workflow reset
+[2025-10-28 15:31:18] [Tool1] Yellow workflow reset
+[2025-10-28 15:31:18] [Tool1] All workflows reset via global$reset_all
+[2025-10-28 15:31:20] [Tool1] Red workflow reset
+[2025-10-28 15:31:20] [Tool1] Green workflow reset
+[2025-10-28 15:31:20] [Tool1] Blue workflow reset
+[2025-10-28 15:31:20] [Tool1] Yellow workflow reset
+[2025-10-28 15:31:20] [Tool1] All workflows reset via global$reset_all
+[2025-10-28 15:31:21] [Tool1] Red workflow reset
+[2025-10-28 15:31:21] [Tool1] Green workflow reset
+[2025-10-28 15:31:21] [Tool1] Blue workflow reset
+[2025-10-28 15:31:21] [Tool1] Yellow workflow reset
+[2025-10-28 15:31:21] [Tool1] All workflows reset via global$reset_all
+[2025-10-28 15:31:26] [Tool1] Red workflow reset
+[2025-10-28 15:31:26] [Tool1] Green workflow reset
+[2025-10-28 15:31:26] [Tool1] Blue workflow reset
+[2025-10-28 15:31:26] [Tool1] Yellow workflow reset
+[2025-10-28 15:31:26] [Tool1] All workflows reset via global$reset_all
+[2025-10-28 15:31:30] [Tool1] Red workflow reset
+[2025-10-28 15:31:30] [Tool1] Green workflow reset
+[2025-10-28 15:31:30] [Tool1] Blue workflow reset
+[2025-10-28 15:31:30] [Tool1] Yellow workflow reset
+[2025-10-28 15:31:30] [Tool1] All workflows reset via global$reset_all
+[2025-10-28 15:31:31] [Tool1] Switched workflow to green
+[2025-10-28 15:31:31] [Tool1] Switched workflow to green
+[2025-10-28 15:31:32] [Tool1] Green button pressed 1 times
+[2025-10-28 15:31:32] [Tool1] Green button pressed 2 times
+[2025-10-28 15:31:32] [Tool1] Green button pressed 3 times
+[2025-10-28 15:31:33] [Tool1] Green button pressed 4 times
+[2025-10-28 15:31:33] [Tool1] Green button pressed 5 times
+[2025-10-28 15:31:33] [Tool1] Green button pressed 6 times
+[2025-10-28 15:31:33] [Tool1] Red workflow reset
+[2025-10-28 15:31:33] [Tool1] Green workflow reset
+[2025-10-28 15:31:33] [Tool1] Blue workflow reset
+[2025-10-28 15:31:33] [Tool1] Yellow workflow reset
+[2025-10-28 15:31:33] [Tool1] All workflows reset via global$reset_all
+[2025-10-28 15:31:35] [Tool1] Red workflow reset
+[2025-10-28 15:31:35] [Tool1] Green workflow reset
+[2025-10-28 15:31:35] [Tool1] Blue workflow reset
+[2025-10-28 15:31:35] [Tool1] Yellow workflow reset
+[2025-10-28 15:31:35] [Tool1] All workflows reset via global$reset_all
+[2025-10-28 15:31:35] [Tool1] Red workflow reset
+[2025-10-28 15:31:35] [Tool1] Green workflow reset
+[2025-10-28 15:31:35] [Tool1] Blue workflow reset
+[2025-10-28 15:31:35] [Tool1] Yellow workflow reset
+[2025-10-28 15:31:35] [Tool1] All workflows reset via global$reset_all
