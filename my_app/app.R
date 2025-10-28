@@ -2,11 +2,12 @@ library(shiny)
 library(bslib)
 library(shinyjs)
 
+# --- Source modules ---
 source("tool1/mod_tool1.R")
 source("tool2/mod_tool2.R")
 source("tool3/mod_tool3.R")
 
-# Theme
+# --- Theme ---
 my_theme <- bs_theme(
   version = 5,
   bootswatch = "flatly",
@@ -14,25 +15,42 @@ my_theme <- bs_theme(
   heading_font = font_google("Poppins")
 )
 
-# Logging
+# --- Logging ---
 log_event <- function(msg) {
   dir.create("log", showWarnings = FALSE)
   timestamp <- format(Sys.time(), "%Y-%m-%d %H:%M:%S")
   cat(sprintf("[%s] %s\n", timestamp, msg), file = "log/log.txt", append = TRUE)
 }
 
-# UI
+# --- UI ---
 ui <- navbarPage(
   title = "Plankton DTO",
   id = "tabs",
   theme = my_theme,
   header = tagList(
     useShinyjs(),
+    # CSS for uniform buttons and color overrides
+    tags$head(
+      tags$style(HTML("
+        .tool1-btn {
+          width: 100%;
+          text-align: center;
+          font-weight: 500;
+          padding: 10px 0;
+        }
+
+        /* Restore Bootstrap default colors */
+        .btn-outline-primary { color: #0d6efd !important; border-color: #0d6efd !important; }
+        .btn-outline-success { color: #198754 !important; border-color: #198754 !important; }
+        .btn-outline-danger  { color: #dc3545 !important; border-color: #dc3545 !important; }
+        .btn-outline-warning { color: #ffc107 !important; border-color: #ffc107 !important; }
+      "))
+    ),
     tags$script(HTML("
       $(document).on('click', '#tabs li a', function(e) {
         var new_tab = $(this).attr('data-value');
         Shiny.setInputValue('tab_click', new_tab, {priority: 'event'});
-        e.preventDefault(); // stop default switch
+        e.preventDefault(); // stop default tab switch
       });
     "))
   ),
@@ -43,7 +61,7 @@ ui <- navbarPage(
   tabPanel("Tool 3", value = "tool3", div(id = "tool3_div", tool3UI("tool3")))
 )
 
-# SERVER
+# --- SERVER ---
 server <- function(input, output, session) {
   
   rv <- reactiveValues(
@@ -51,12 +69,12 @@ server <- function(input, output, session) {
     pending_tab = NULL
   )
   
-  # Initialize modules
-  tool1_reset <- tool1Server("tool1", rv)$reset
+  # --- Initialize modules ---
+  tool1_reset <- tool1Server("tool1", rv, tab_active = reactive(input$tabs))$reset
   tool2_reset <- tool2Server("tool2", rv)$reset
   tool3_reset <- tool3Server("tool3", rv)$reset
   
-  # Hide modules initially
+  # --- Hide modules initially ---
   hide("tool1_div")
   hide("tool2_div")
   hide("tool3_div")
@@ -70,7 +88,7 @@ server <- function(input, output, session) {
     if (tab == "tool3") show("tool3_div")
   }
   
-  # Intercept tab clicks
+  # --- Intercept tab clicks ---
   observeEvent(input$tab_click, {
     new_tab <- input$tab_click
     old_tab <- rv$current_tab
@@ -83,41 +101,52 @@ server <- function(input, output, session) {
       showModal(modalDialog(
         title = "Leaving Tool",
         paste0("You are leaving ", old_tab, ". All data will be reset."),
-        easyClose = FALSE,  # user must choose OK or Cancel
+        easyClose = FALSE,
         footer = tagList(
           actionButton("cancel_leave", "Cancel"),
           actionButton("confirm_leave", "OK", class = "btn btn-danger")
         )
       ))
     } else {
-      # Switch directly if not leaving a tool
       rv$current_tab <- new_tab
       updateTabsetPanel(session, "tabs", selected = new_tab)
       toggleTabVisibility(new_tab)
       log_event(paste0("Switched to tab '", new_tab, "' without confirmation"))
+      
+      # Reset Tool1 after tab is fully shown
+      if (new_tab == "tool1") {
+        invalidateLater(10, session)
+        tool1_reset()
+      }
     }
   })
   
-  # OK clicked
   observeEvent(input$confirm_leave, {
     removeModal()
-    old_tab <- rv$current_tab
-    new_tab <- rv$pending_tab
+    old <- rv$current_tab
+    new <- rv$pending_tab
     rv$pending_tab <- NULL
     
     # Reset old module
-    if (old_tab == "tool1") tool1_reset()
-    if (old_tab == "tool2") tool2_reset()
-    if (old_tab == "tool3") tool3_reset()
+    if (old == "tool1") tool1_reset()
+    if (old == "tool2") tool2_reset()
+    if (old == "tool3") tool3_reset()
     
-    # Switch
-    rv$current_tab <- new_tab
-    updateTabsetPanel(session, "tabs", selected = new_tab)
-    toggleTabVisibility(new_tab)
-    log_event(paste0("Switched from '", old_tab, "' to '", new_tab, "' after OK"))
+    # Switch tab
+    rv$current_tab <- new
+    updateTabsetPanel(session, "tabs", selected = new)
+    toggleTabVisibility(new)
+    log_event(paste0("Switched from '", old, "' to '", new, "' after OK"))
+    
+    # Explicitly reset Tool1 if switching TO it
+    if (new == "tool1") {
+      # short delay ensures divs are shown before reset
+      invalidateLater(10, session)
+      tool1_reset()
+    }
   })
   
-  # CANCEL clicked
+  # --- Cancel leaving tool ---
   observeEvent(input$cancel_leave, {
     removeModal()
     updateTabsetPanel(session, "tabs", selected = rv$current_tab) # restore previous tab
@@ -126,4 +155,5 @@ server <- function(input, output, session) {
   })
 }
 
+# --- Run app ---
 shinyApp(ui, server)
