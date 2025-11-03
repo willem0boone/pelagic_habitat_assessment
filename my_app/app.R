@@ -55,10 +55,10 @@ ui <- navbarPage(
     "))
   ),
   
-  tabPanel("Welcome", value = "welcome", fluidPage(includeHTML("welcome.html"))),
-  tabPanel("Tool 1", value = "tool1", div(id = "tool1_div", tool1UI("tool1"))),
-  tabPanel("Tool 2", value = "tool2", div(id = "tool2_div", tool2UI("tool2"))),
-  tabPanel("Tool 3", value = "tool3", div(id = "tool3_div", tool3UI("tool3")))
+  tabPanel("Main page", value = "welcome", fluidPage(includeHTML("welcome.html"))),
+  tabPanel("PH1 - Plankton Communities", value = "tool1", div(id = "tool1_div", tool1UI("tool1"))),
+  tabPanel("PH2 - Plankton Biomass", value = "tool2", div(id = "tool2_div", tool2UI("tool2"))),
+  tabPanel("PH3 - Plankton Diversity", value = "tool3", div(id = "tool3_div", tool3UI("tool3")))
 )
 
 # --- SERVER ---

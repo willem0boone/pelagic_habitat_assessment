@@ -1,71 +1,119 @@
-[2025-10-28 15:31:08] [Tool1] Tool1 main page initialized
-[2025-10-28 15:31:09] [Tool1] Red workflow reset
-[2025-10-28 15:31:09] [Tool1] Green workflow reset
-[2025-10-28 15:31:09] [Tool1] Blue workflow reset
-[2025-10-28 15:31:09] [Tool1] Yellow workflow reset
-[2025-10-28 15:31:09] [Tool1] All workflows reset via global$reset_all
-[2025-10-28 15:31:10] [Tool1] Switched workflow to red
-[2025-10-28 15:31:11] [Tool1] Red button pressed 1 times
-[2025-10-28 15:31:12] [Tool1] Red button pressed 2 times
-[2025-10-28 15:31:12] [Tool1] Red button pressed 3 times
-[2025-10-28 15:31:12] [Tool1] Red button pressed 4 times
-[2025-10-28 15:31:12] [Tool1] Red button pressed 5 times
-[2025-10-28 15:31:12] [Tool1] Red button pressed 6 times
-[2025-10-28 15:31:14] [Tool1] Red workflow reset
-[2025-10-28 15:31:14] [Tool1] Green workflow reset
-[2025-10-28 15:31:14] [Tool1] Blue workflow reset
-[2025-10-28 15:31:14] [Tool1] Yellow workflow reset
-[2025-10-28 15:31:14] [Tool1] All workflows reset via global$reset_all
-[2025-10-28 15:31:15] [Tool1] Red workflow reset
-[2025-10-28 15:31:15] [Tool1] Green workflow reset
-[2025-10-28 15:31:15] [Tool1] Blue workflow reset
-[2025-10-28 15:31:15] [Tool1] Yellow workflow reset
-[2025-10-28 15:31:15] [Tool1] All workflows reset via global$reset_all
-[2025-10-28 15:31:18] [Tool1] Red workflow reset
-[2025-10-28 15:31:18] [Tool1] Green workflow reset
-[2025-10-28 15:31:18] [Tool1] Blue workflow reset
-[2025-10-28 15:31:18] [Tool1] Yellow workflow reset
-[2025-10-28 15:31:18] [Tool1] All workflows reset via global$reset_all
-[2025-10-28 15:31:20] [Tool1] Red workflow reset
-[2025-10-28 15:31:20] [Tool1] Green workflow reset
-[2025-10-28 15:31:20] [Tool1] Blue workflow reset
-[2025-10-28 15:31:20] [Tool1] Yellow workflow reset
-[2025-10-28 15:31:20] [Tool1] All workflows reset via global$reset_all
-[2025-10-28 15:31:21] [Tool1] Red workflow reset
-[2025-10-28 15:31:21] [Tool1] Green workflow reset
-[2025-10-28 15:31:21] [Tool1] Blue workflow reset
-[2025-10-28 15:31:21] [Tool1] Yellow workflow reset
-[2025-10-28 15:31:21] [Tool1] All workflows reset via global$reset_all
-[2025-10-28 15:31:26] [Tool1] Red workflow reset
-[2025-10-28 15:31:26] [Tool1] Green workflow reset
-[2025-10-28 15:31:26] [Tool1] Blue workflow reset
-[2025-10-28 15:31:26] [Tool1] Yellow workflow reset
-[2025-10-28 15:31:26] [Tool1] All workflows reset via global$reset_all
-[2025-10-28 15:31:30] [Tool1] Red workflow reset
-[2025-10-28 15:31:30] [Tool1] Green workflow reset
-[2025-10-28 15:31:30] [Tool1] Blue workflow reset
-[2025-10-28 15:31:30] [Tool1] Yellow workflow reset
-[2025-10-28 15:31:30] [Tool1] All workflows reset via global$reset_all
-[2025-10-28 15:31:31] [Tool1] Switched workflow to green
-[2025-10-28 15:31:31] [Tool1] Switched workflow to green
-[2025-10-28 15:31:32] [Tool1] Green button pressed 1 times
-[2025-10-28 15:31:32] [Tool1] Green button pressed 2 times
-[2025-10-28 15:31:32] [Tool1] Green button pressed 3 times
-[2025-10-28 15:31:33] [Tool1] Green button pressed 4 times
-[2025-10-28 15:31:33] [Tool1] Green button pressed 5 times
-[2025-10-28 15:31:33] [Tool1] Green button pressed 6 times
-[2025-10-28 15:31:33] [Tool1] Red workflow reset
-[2025-10-28 15:31:33] [Tool1] Green workflow reset
-[2025-10-28 15:31:33] [Tool1] Blue workflow reset
-[2025-10-28 15:31:33] [Tool1] Yellow workflow reset
-[2025-10-28 15:31:33] [Tool1] All workflows reset via global$reset_all
-[2025-10-28 15:31:35] [Tool1] Red workflow reset
-[2025-10-28 15:31:35] [Tool1] Green workflow reset
-[2025-10-28 15:31:35] [Tool1] Blue workflow reset
-[2025-10-28 15:31:35] [Tool1] Yellow workflow reset
-[2025-10-28 15:31:35] [Tool1] All workflows reset via global$reset_all
-[2025-10-28 15:31:35] [Tool1] Red workflow reset
-[2025-10-28 15:31:35] [Tool1] Green workflow reset
-[2025-10-28 15:31:35] [Tool1] Blue workflow reset
-[2025-10-28 15:31:35] [Tool1] Yellow workflow reset
-[2025-10-28 15:31:35] [Tool1] All workflows reset via global$reset_all
+[2025-11-03 15:06:18] [Tool1] Switched workflow to welcome
+[2025-11-03 15:06:19] [Tool1] Green workflow reset
+[2025-11-03 15:06:19] [Tool1] Blue workflow reset
+[2025-11-03 15:06:19] [Tool1] Yellow workflow reset
+[2025-11-03 15:06:19] [Tool1] Switched workflow to welcome
+[2025-11-03 15:06:19] [Tool1] All workflows reset via global$reset_all
+[2025-11-03 15:06:21] [Tool1] Switched workflow to plet
+[2025-11-03 15:13:11] [Tool1] Switched workflow to welcome
+2025-11-03 15:13:11 - Loading WFS features...
+2025-11-03 15:13:12 - Loaded OSPAR features successfully.
+2025-11-03 15:13:12 - Connected to Parquet dataset.
+2025-11-03 15:13:15 - PLET workflow reset.
+[2025-11-03 15:13:15] [Tool1] Green workflow reset
+[2025-11-03 15:13:15] [Tool1] Blue workflow reset
+[2025-11-03 15:13:15] [Tool1] Yellow workflow reset
+[2025-11-03 15:13:15] [Tool1] Switched workflow to welcome
+[2025-11-03 15:13:15] [Tool1] All workflows reset via global$reset_all
+[2025-11-03 15:13:16] [Tool1] Switched workflow to plet
+2025-11-03 15:13:19 - Region selected: SNS
+2025-11-03 15:13:20 - Available datasets for region SNS : BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto, BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_zoo, NL_Rijkswaterstaat_RWS_RWS_Fpzout_2000_2019_phyto, UK_Marine_Biological_Association_MBA_Continuous_Plankton_Recorder_dataset
+[2025-11-03 15:13:23] [Tool1] Switched workflow to green
+[2025-11-03 15:13:25] [Tool1] Green workflow reset
+[2025-11-03 15:13:27] [Tool1] Switched workflow to plet
+2025-11-03 15:13:28 - Region selected: NNS
+2025-11-03 15:13:28 - Available datasets for region NNS : UK_Marine_Biological_Association_MBA_Continuous_Plankton_Recorder_dataset
+2025-11-03 15:13:30 - Region selected: SNS
+2025-11-03 15:13:30 - Available datasets for region SNS : BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto, BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_zoo, NL_Rijkswaterstaat_RWS_RWS_Fpzout_2000_2019_phyto, UK_Marine_Biological_Association_MBA_Continuous_Plankton_Recorder_dataset
+[2025-11-03 15:17:41] [Tool1] Switched workflow to welcome
+2025-11-03 15:17:41 - Loading WFS features...
+2025-11-03 15:17:42 - Loaded OSPAR features successfully.
+2025-11-03 15:17:42 - Connected to Parquet dataset.
+2025-11-03 15:17:42 - PLET workflow reset.
+[2025-11-03 15:17:42] [Tool1] Green workflow reset
+[2025-11-03 15:17:42] [Tool1] Blue workflow reset
+[2025-11-03 15:17:42] [Tool1] Yellow workflow reset
+[2025-11-03 15:17:42] [Tool1] Switched workflow to welcome
+[2025-11-03 15:17:42] [Tool1] All workflows reset via global$reset_all
+[2025-11-03 15:17:44] [Tool1] Switched workflow to plet
+[2025-11-03 15:21:14] [Tool1] Switched workflow to welcome
+2025-11-03 15:21:14 - Loading WFS features...
+2025-11-03 15:21:15 - Loaded OSPAR features successfully.
+2025-11-03 15:21:15 - Connected to Parquet dataset.
+2025-11-03 15:21:15 - PLET workflow reset.
+[2025-11-03 15:21:15] [Tool1] Green workflow reset
+[2025-11-03 15:21:15] [Tool1] Blue workflow reset
+[2025-11-03 15:21:15] [Tool1] Yellow workflow reset
+[2025-11-03 15:21:15] [Tool1] Switched workflow to welcome
+[2025-11-03 15:21:15] [Tool1] All workflows reset via global$reset_all
+[2025-11-03 15:21:16] [Tool1] Switched workflow to plet
+2025-11-03 15:21:30 - Region selected: SNS
+2025-11-03 15:21:30 - Available datasets for region SNS : BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto, BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_zoo, NL_Rijkswaterstaat_RWS_RWS_Fpzout_2000_2019_phyto, UK_Marine_Biological_Association_MBA_Continuous_Plankton_Recorder_dataset
+2025-11-03 15:21:33 - Dataset selected: BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto
+2025-11-03 15:21:39 - PLET workflow reset.
+2025-11-03 15:21:43 - Region selected: SNS
+2025-11-03 15:21:43 - Available datasets for region SNS : BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto, BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_zoo, NL_Rijkswaterstaat_RWS_RWS_Fpzout_2000_2019_phyto, UK_Marine_Biological_Association_MBA_Continuous_Plankton_Recorder_dataset
+2025-11-03 15:21:47 - Dataset selected: BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_zoo
+2025-11-03 15:21:51 - Region selected: NNS
+2025-11-03 15:21:51 - Available datasets for region NNS : UK_Marine_Biological_Association_MBA_Continuous_Plankton_Recorder_dataset
+2025-11-03 15:21:56 - Dataset selected: UK_Marine_Biological_Association_MBA_Continuous_Plankton_Recorder_dataset
+2025-11-03 15:22:00 - Region selected: SNS
+2025-11-03 15:22:00 - Available datasets for region SNS : BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto, BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_zoo, NL_Rijkswaterstaat_RWS_RWS_Fpzout_2000_2019_phyto, UK_Marine_Biological_Association_MBA_Continuous_Plankton_Recorder_dataset
+2025-11-03 15:22:06 - Dataset selected: BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto
+[2025-11-03 15:35:10] [Tool1] Switched workflow to welcome
+2025-11-03 15:35:11 - Loading WFS features...
+2025-11-03 15:35:11 - Loaded OSPAR features successfully.
+2025-11-03 15:35:12 - Connected to Parquet dataset.
+2025-11-03 15:35:12 - PLET workflow reset.
+[2025-11-03 15:35:12] [Tool1] Green workflow reset
+[2025-11-03 15:35:12] [Tool1] Blue workflow reset
+[2025-11-03 15:35:12] [Tool1] Yellow workflow reset
+[2025-11-03 15:35:12] [Tool1] Switched workflow to welcome
+[2025-11-03 15:35:12] [Tool1] All workflows reset via global$reset_all
+[2025-11-03 15:35:13] [Tool1] Switched workflow to plet
+2025-11-03 15:35:17 - Region selected: SNS
+2025-11-03 15:35:17 - Available datasets for region SNS : BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto, BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_zoo, NL_Rijkswaterstaat_RWS_RWS_Fpzout_2000_2019_phyto, UK_Marine_Biological_Association_MBA_Continuous_Plankton_Recorder_dataset
+2025-11-03 15:35:20 - Dataset selected: BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto
+[2025-11-03 15:51:04] [Tool1] Switched workflow to welcome
+2025-11-03 15:51:04 - Loading WFS features...
+2025-11-03 15:51:05 - Loaded OSPAR features successfully.
+[2025-11-03 15:51:08] [Tool1] Switched workflow to welcome
+[2025-11-03 15:51:08] [Tool1] Loading WFS features...
+[2025-11-03 15:51:08] [Tool1] Loaded OSPAR features successfully.
+[2025-11-03 15:51:09] [Tool1] Connected to Parquet dataset.
+[2025-11-03 15:51:10] [Tool1] PLET workflow reset.
+[2025-11-03 15:51:10] [Tool1] Green workflow reset
+[2025-11-03 15:51:10] [Tool1] Blue workflow reset
+[2025-11-03 15:51:10] [Tool1] Yellow workflow reset
+[2025-11-03 15:51:10] [Tool1] Switched workflow to welcome
+[2025-11-03 15:51:10] [Tool1] All workflows reset via global$reset_all
+[2025-11-03 15:51:11] [Tool1] Switched workflow to plet
+[2025-11-03 15:51:16] [Tool1] PLET workflow reset.
+[2025-11-03 15:51:16] [Tool1] Return to main menu triggered.
+[2025-11-03 15:51:19] [Tool1] PLET workflow reset.
+[2025-11-03 15:51:24] [Tool1] Region selected: SNS
+[2025-11-03 15:51:24] [Tool1] Available datasets for region SNS : BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto, BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_zoo, NL_Rijkswaterstaat_RWS_RWS_Fpzout_2000_2019_phyto, UK_Marine_Biological_Association_MBA_Continuous_Plankton_Recorder_dataset
+[2025-11-03 15:51:27] [Tool1] Dataset selected: BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto
+[2025-11-03 15:51:48] [Tool1] Running analysis for dataset BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto Lifeform1: dinoflagellate Lifeform2: diatom Reference period: 2015-2019 Comparison period: 1960-2014
+[2025-11-03 16:00:44] [Tool1] Switched workflow to welcome
+[2025-11-03 16:00:44] [Tool1] Loading WFS features...
+[2025-11-03 16:00:45] [Tool1] Loaded OSPAR features successfully.
+[2025-11-03 16:00:46] [Tool1] Connected to Parquet dataset.
+[2025-11-03 16:02:46] [Tool1] Switched workflow to welcome
+[2025-11-03 16:02:47] [Tool1] WFS features loaded
+[2025-11-03 16:02:47] [Tool1] Parquet dataset connected
+[2025-11-03 16:03:08] [Tool1] Switched workflow to welcome
+[2025-11-03 16:03:08] [Tool1] Loading WFS features...
+[2025-11-03 16:03:09] [Tool1] Loaded OSPAR features successfully.
+[2025-11-03 16:03:09] [Tool1] Connected to Parquet dataset.
+[2025-11-03 16:03:09] [Tool1] PLET workflow reset.
+[2025-11-03 16:03:09] [Tool1] Green workflow reset
+[2025-11-03 16:03:09] [Tool1] Blue workflow reset
+[2025-11-03 16:03:09] [Tool1] Yellow workflow reset
+[2025-11-03 16:03:09] [Tool1] Switched workflow to welcome
+[2025-11-03 16:03:09] [Tool1] All workflows reset via global$reset_all
+[2025-11-03 16:03:10] [Tool1] Switched workflow to plet
+[2025-11-03 16:03:18] [Tool1] Region selected: SNS
+[2025-11-03 16:03:18] [Tool1] Available datasets for region SNS : BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto, BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_zoo, NL_Rijkswaterstaat_RWS_RWS_Fpzout_2000_2019_phyto, UK_Marine_Biological_Association_MBA_Continuous_Plankton_Recorder_dataset
+[2025-11-03 16:03:20] [Tool1] Dataset selected: BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto
+[2025-11-03 16:03:31] [Tool1] Running analysis for dataset BE_Flanders_Marine_Institute_VLIZ_LW_VLIZ_phyto Lifeform1: auto_and_mix_dinos Lifeform2: carniv_zoo Reference period: 2015-2019 Comparison period: 1960-2014
